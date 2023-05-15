@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Exercicio 08</title>
+</head>
+<body>
+    <script>
+       // alert("oi")
+       //prompt
+      var salarioBruto= parseFloat(prompt("Informe seu salario Bruto").replace(',','.'))
+      var dependentes= parseInt(prompt("Informe numero de dependente "))
+       var inss
+    
+       
+
+    
+
+       if (salarioBruto<= 1212)
+       {
+          
+           inss = salarioBruto* 0.075
+          
+           document.write (` Seu inss é: ${(inss).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})}<br/>`)
+        }
+        else if (salarioBruto<= 2427.35)
+       {
+          
+           inss = 97.65+(salarioBruto-1302.00)*0.09
+         
+
+            document.write (`Seu inss é: ${(inss).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})} <br/>`)
+        }
+        else if (salarioBruto<= 3641.03)
+       {
+          
+                inss = 97.65+117.51+(salarioBruto-2607.70)*0.12
+                
+
+                    document.write (`Seu inss é: ${(inss).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})}<br/>`)
+        }
+        else
+       {      
+                 inss = 97.65+117.51+156.46+(salarioBruto-3911.56)*0.14
+                 
+
+                document.write (`Seu inss é: ${(inss).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})}<br/>`)
+        }
+     
+   
+        var deducao =  (inss+ dependentes*189.59)
+        var salarioLiquido = (salarioBruto - deducao )
+        
+        if (salarioLiquido<= 1903.98)
+       {
+          
+
+           document.write (`Você está insento do imposto de renda`)
+        }
+        else if (salarioLiquido<= 2826.65 )
+       {
+          
+        var impostoRenda = (salarioLiquido*0.075)-142.80
+
+            document.write (`O imposto de renda é: ${(impostoRenda).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})}`)
+        }
+        else if (salarioLiquido<= 3751.05)
+       {
+          
+        var impostoRenda = (salarioLiquido*0.15)-354.80
+
+                    document.write (`O imposto de renda é: ${(impostoRenda).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})}`)
+        }
+        else  if (salarioLiquido<= 4664.68)
+       {      
+         var impostoRenda = (salarioLiquido*0.225)-636.13
+
+                document.write (`O imposto de renda é: ${(impostoRenda).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})}`)
+        }
+        else{
+            var impostoRenda = (salarioLiquido*0.275)-869.36
+
+            document.write (`O imposto de renda é: ${(impostoRenda).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})}`)
+
+        }
+
+    </script>
+    <P> Para uma nova verificação atualize a pagina </P>
+
+   
+</body>
+</html>

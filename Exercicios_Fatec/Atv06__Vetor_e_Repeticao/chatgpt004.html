@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const perguntas = [
+          { texto: "Digite um nome com mais de 3 caracteres", valida: (resposta) => resposta.length >= 3 },
+          { texto: "Digite uma idade entre 0 e 150", valida: (resposta) => parseInt(resposta) >= 0 && parseInt(resposta) <= 150 },
+          { texto: "Digite um salario valido", valida: (resposta) => parseFloat(resposta) > 0 },
+          { texto: "Digite f ou m para o sexo", valida: (resposta) => resposta.toUpperCase() === "F" || resposta.toUpperCase() === "M" },
+          { texto: "Digite s para solteiro, c para casado, v para viuva ou d para divorciado", valida: (resposta) => resposta.toUpperCase() === "S" || resposta.toUpperCase() === "C" || resposta.toUpperCase() === "V" || resposta.toUpperCase() === "D" }
+        ];
+      
+        let respostas = [];
+      
+        for (let i = 0; i < perguntas.length; i++) {
+          let resposta;
+          do {
+            resposta = prompt(perguntas[i].texto);
+          } while (!perguntas[i].valida(resposta));
+          respostas.push(resposta);
+        }
+
+
+        //ou
+
+        /*
+         let nome, idade, salario, sexo, estadoCivil;
+
+  do {
+    nome = prompt("Digite um nome com mais de 3 caracteres");
+  } while (nome.length < 3);
+
+  do {
+    idade = parseInt(prompt("Digite uma idade entre 0 e 150"));
+  } while (!(idade >= 0 && idade <= 150));
+
+  do {
+    salario = parseFloat(prompt("Digite um salario valido"));
+  } while (salario < 0);
+
+  do {
+    sexo = prompt("Digite f ou m para o sexo");
+  } while (!(sexo.toUpperCase() === "F" || sexo.toUpperCase() === "M"));
+
+  do {
+    estadoCivil = prompt("Digite s para solteiro, c para casado, v para viuva ou d para divorciado");
+  } while (!(estadoCivil.toUpperCase() === "S" || estadoCivil.toUpperCase() === "C" || estadoCivil.toUpperCase() === "V" || estadoCivil.toUpperCase() === "D"));
+  */
+      </script>
+</body>
+</html>

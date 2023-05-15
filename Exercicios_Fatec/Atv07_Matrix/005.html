@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var matriz = []
+        var soma = 0;
+        for(let i=0; i<3; i++){
+            matriz[i] = [];
+            for(let j =0; j<3; j++){
+
+                matriz[i][j] = Math.floor(Math.random() * 10);
+               
+            }
+
+        }
+        //matriz[1][1] = 1;
+        var linha = parseInt(prompt("digite um numero de linha"))
+        var coluna = parseInt(prompt("digite um numero de coluna"))
+        var valor = parseInt(prompt("Digite um valor"))
+        
+        
+        if(matriz[linha][coluna] == valor){
+            alert("VOCÊ INFORMOU UM VALOR IGUAL AO ATUAL")
+        }else{
+            matriz[linha][coluna] = valor
+
+        }
+
+        
+        document.write(matriz)
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 03</title>
+</head>
+<body>
+    <Script>
+        // comprado 100 ações 
+        var QtdAcoes = 1000
+        //cada uma era 32,87
+        var ValorCompra = 32.87
+        // foi pago 2% sobre valor pago pelas ações
+        const Taxa = 0.02
+        // vendeu todas 100 ações por 33,92 cada
+        var ValorVenda = 33.92
+
+        // totais
+        var TotalPagoCompra = (ValorCompra*Taxa)*QtdAcoes+ValorCompra*QtdAcoes
+        var TotalTaxaCompra = (ValorCompra*Taxa)*QtdAcoes
+        var TotalTaxaVenda =  (ValorVenda*Taxa)*QtdAcoes
+        var Lucro = (ValorVenda*QtdAcoes) - (TotalPagoCompra+ TotalTaxaVenda)
+
+        document.write("oii" + ValorCompra)
+
+        //Quantia que jose pagou pelas ações 100*32,87 + 1000*(32,87*0.02)
+        document.write(`<i>A - </i> A Quantia que josé pagou pelas Mil ações foi de: <strong> ${(ValorCompra*QtdAcoes).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})} </strong> <br/> E a Quatia total que ele pagou pelas ações junto a taxa de corretagem foi de:<strong> ${(TotalPagoCompra).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})} </strong> <br/><br/>`)
+
+        // Comissao pagou comprou  cada (32,87*0.02) total 1000*(32,87*0.02)
+        document.write(`<i>B - </i>  O valor da comissão pago ao corretor de cada ação comprada foi de :<strong> ${(ValorCompra*Taxa).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})} </strong> <br/> E o valor total da comissao pago pelas Mil ações comprada foi de: <strong> ${(TotalTaxaCompra).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})} </strong><br/><br/>`)
+
+        // Quantia que vendeu 100*33.92
+        document.write(`<i>C - </i> A Quantia pela qual josé vendeu as Mil ações foi de: <strong> ${(ValorVenda*QtdAcoes).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})} </strong>  <br/><br/>`)
+
+        // Comissao pagou vendeu cada (33,92*0.02) total 1000*(33,92*0.02)
+        document.write(`<i>D - </i>  O valor da comissão pago ao corretor de cada ação vendida foi de :<strong> ${(ValorVenda*Taxa).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})} </strong> <br/> E o valor total da comissao pago pelas Mil ações vendidas foi de: <strong> ${(TotalTaxaVenda).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})} </strong><br/><br/>`)
+
+        // quanto jose ganhou vender ações e pagar o corretor e lucro
+        document.write(`<i>E - </i>  O valor total ganho ao vender as ações com a comissão do valor da transação pago é :<strong> ${((ValorVenda*QtdAcoes)-TotalTaxaVenda).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})} </strong> <br/> E o lucro adquirido do valor total ganho nas vendas menos valor gasto com a compra das ações e taxas é de : <strong> ${(Lucro).toLocaleString('pt-Br',{style: 'currency', currency: 'BRL'})} </strong><br/><br/>`)
+
+        if(Lucro>0){
+            document.write("Ele teve Lucro")
+        }else{
+            document.write("Ele Não teve Lucro")
+        }
+        
+    </Script>
+    
+</body>
+</html>

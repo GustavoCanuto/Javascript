@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 08</title>
+</head>
+<body>
+    <Script>
+       // Folha de pagamento
+    
+        var ValorHora= Number.parseFloat(prompt(`Digite valor que ganha por hora`).replace(',','.'))
+        var HorasTrabalhada= Number.parseFloat(prompt(`Digite numero de horas trabalhadas`).replace(',','.'))
+        var PorcentagemInss = Number.parseFloat(prompt(`Digite a quantidade em porcetagem de inss que é descontado do salario`).replace(',','.'))
+        var SalarioLiquido = (ValorHora*HorasTrabalhada)- (ValorHora*HorasTrabalhada)*(PorcentagemInss/100)
+    document.write(`Seu salario bruto é: ${ValorHora*HorasTrabalhada} <br/>
+    Seu salario liquido é: ${SalarioLiquido}`)
+        
+        
+    </Script>
+    <p> Para fazer novo calculo recarregue a pagina <br/></p>
+</body>
+</html>

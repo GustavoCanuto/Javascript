@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 02</title>
+</head>
+<body>
+    <Script>
+        var ValorRefeicao = Number.parseFloat(prompt('Insira o valor da refeição : ').replace(',','.'))
+        
+        // Calcular Valor da gorjeta 15%
+        var ValorGorjeta = ValorRefeicao*0.15
+        // imposto sobre valor da refeição 7%
+        var Imposto = ValorRefeicao*0.07
+        //Valor total
+        var ValorTotal = ValorRefeicao + ValorGorjeta + Imposto
+       
+        //exibir valor da compra
+        document.write(`O valor da refeição é:  ${ValorRefeicao.toFixed(2)} <br/>`)
+        //Gorjeta
+        document.write(`O valor da Gorjeta é:  ${ValorGorjeta.toFixed(2)}  <br/>`)
+        // imposto 
+        document.write(`O valor do Imposto sobre a refeição é:  ${Imposto.toFixed(2)}  <br/>`)
+        // total
+        document.write(`O valor Total é:  ${ValorTotal.toFixed(2)}  <br/>`)
+      
+        
+    </Script>
+    <p> Para fazer novo calculo recarregue a pagina <br/></p>
+</body>
+</html>

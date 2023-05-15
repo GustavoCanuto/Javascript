@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var paisPopulacaoA =  80000;
+        var paisPopulacaoB =  200000;
+        const taxaPaisA = 0.03;
+        const taxaPaisB = 0.015;
+
+        var anos =0;
+
+        while(paisPopulacaoA<paisPopulacaoB){
+            paisPopulacaoA = paisPopulacaoA + (paisPopulacaoA*taxaPaisA);
+            paisPopulacaoB = paisPopulacaoB + (paisPopulacaoB*taxaPaisB);
+            anos++;
+        }
+
+        document.write("Foram necessario "+anos+" para o pais A ultrapassar populacao do pais B")
+    </script>
+</body>
+</html>

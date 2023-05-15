@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Exercicio 07</title>
+</head>
+<body>
+    <script>
+       // alert("oi")
+       //prompt
+      var operador = prompt("Digite: \n 01 - Para realizar uma soma \n 02 - Para realizar uma subtração \n 03 - Para realizar uma multiplicação \n 04 - Para realizar uma divisão ")
+
+       if(operador !== "01" && operador !== "02" && operador !== "03" && operador !== "04" )
+       {
+          alert("Opção invalida, por favor insira uma das 04 opções")
+          location.reload()
+       }
+       else{
+
+      var n1 = parseFloat(prompt("Digite um número"))
+      var n2 = parseFloat(prompt("Digite outro número"))
+     // var resultado = 0
+
+       if (operador == '01' )
+       {
+          
+           var resultado = n1 + n2
+           document.write (`O resultado da soma é:<br/> ${n1} + ${n2} = ${resultado}`)
+        }
+        else if (operador == '02' )
+       {
+          
+           var resultado = n1 - n2
+           document.write (`O resultado da subtração é:<br/> ${n1} - ${n2} = ${resultado}`)
+        }
+        else if (operador == '03' )
+       {
+          
+           var resultado = n1 * n2
+           document.write (`O resultado da multiplicação é:<br/> ${n1} X ${n2} = ${resultado}`)
+        }
+        else if (operador == '04' )
+       {
+          
+           var resultado = n1/n2
+           document.write (`O resultado da divisão é:<br/> ${n1} / ${n2} = ${resultado}`)
+        }
+     }
+   
+    </script>
+    <P> Para uma nova verificação atualize a pagina </P>
+
+   
+</body>
+</html>

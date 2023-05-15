@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 04</title>
+</head>
+<body>
+    <Script>
+        var Men = Number.parseInt(prompt('Insira o numero de homens matriculados na classe: '))
+        var Women = Number.parseInt(prompt('Insira o numero de mulheres matriculadas na classe:  '))
+        
+        // total alunos
+        var TotalAlunos = Men + Women
+        // Porcentual homens
+        var Pmen = (Men/TotalAlunos)*100
+        // Porcentual mulheres
+        var Pwomen = (Women/TotalAlunos)*100
+       
+        //exibir Porcentuais
+        document.write(`O percentual de homens na classe é:  ${Pmen.toFixed(2)} % <br/> O percentual de mulheres na classe é: ${Pwomen.toFixed(2)} %`)
+    
+        
+    </Script>
+    <p> Para fazer novo calculo recarregue a pagina <br/></p>
+</body>
+</html>

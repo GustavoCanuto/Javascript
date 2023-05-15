@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de melhor veiculo</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+    <fieldset id="loja">
+
+        <legend>Dados da loja</legend>
+        
+        <!-- <h3 id="TextoPrimeiraPagina">Informe a media mensal dos gastos essenciais :</h3> -->
+
+        <form id="form1" >
+            <br>
+            
+            <div style="display: inline-block;  vertical-align: top; margin-right: 30px;">
+
+                <label for="Nomeloja">Nome da loja:</label><br>
+                <input type="text" id="Nomeloja" name="Nomeloja" minlength="3" maxlength="50">
+                
+                <br><br>
+                
+                <h3> Endereço Loja </h3> 
+            
+                <fieldset>
+                    
+                <p><label for="ceploja" class="form-label"> CEP:</label> 
+                <input type="text" class="form-label" placeholder="_____-___" maxlength="10" name="ceploja" id="ceploja" oninput="buscaCep();" required></p>
+                 
+                <label for="rualoja" class="form-label">Rua:</label>
+                <input type="text" class="form-label" placeholder="Ex: Rua X" name="rualoja" id="rualoja" required>
+                
+                <label for="numeroloja" class="form-label"> Numero:</label>
+                <input type="number" class="form-label" placeholder="Ex: 10, 20b" name="numeroloja" id="numeroloja" min="1" max="99999" required>
+                
+                <p><label for="bairroloja" class="form-label"> Bairro:</label> 
+                <input type="text" class="form-label" required name="bairroloja" id="bairroloja" > </p>
+                
+                <p><label for="cidadeloja" class="form-label"> Cidade:</label>
+                <input type="text" class="form-label" name ="cidadeloja" id="cidadeloja" required> </p>
+                </fieldset>
+        
+        </div>
+        <br><br><br><br>
+    </fieldset>
+
+            <fieldset id="cliente">
+        <legend>Dados do Cliente</legend>
+        
+
+            
+        <!-- <h3 id="TextoPrimeiraPagina">Informe a media mensal dos gastos essenciais :</h3> -->
+
+        <form id="form2" >
+
+            <div style="display: inline-block;  vertical-align: top; margin-right: 30px;">
+                <br>
+
+                <label for="NomeCliente">Nome do Cliente:</label><br>
+                <input type="text" id="NomeCliente" name="NomeCliente" minlength="3" maxlength="50">
+                
+                <br><br>
+
+                <label for="Obs">Observação:</label><br>
+                <input type="text" id="Obs" name="Obs"  maxlength="50">
+
+                <h3> Endereço Cliente</h3> 
+            
+                <fieldset>
+                    
+                <p><label for="cep" class="form-label"> CEP:</label> 
+                <input type="text" class="form-label" placeholder="_____-___" maxlength="10" name="cep" id="cep" oninput="buscaCep();" required></p>
+                 
+                <label for="rua" class="form-label">Rua:</label>
+                <input type="text" class="form-label" placeholder="Ex: Rua X" name="rua" id="rua" required>
+                
+                <label for="numero" class="form-label"> Numero:</label>
+                <input type="number" class="form-label" placeholder="Ex: 10, 20b" name="numero" id="numero" min="1" max="99999" required>
+                
+                <p><label for="bairro" class="form-label"> Bairro:</label> 
+                <input type="text" class="form-label" required name="bairro" id="bairro" > </p>
+                
+                <p><label for="cidade" class="form-label"> Cidade:</label>
+                <input type="text" class="form-label" name ="cidade" id="cidade" required> </p>
+                </fieldset>
+            
+                
+                <br><br>
+    
+            </div>   
+           </fieldset>
+
+            <!-- <div style="display: inline-block"> -->
+
+            <!--  onclick="MostrarNaoEssencais(); document.getElementById('form1').reportValidity();" -->
+           <!-- Botão Registrar - Encaminha para fieldset Não-Essencial -->
+           
+           <button type="button" id="BotaoVerificar" onclick="capturarDados()">Verificar</button>
+
+    <div id="resultado"></div>
+    <script>
+  var dados = [];
+
+  function capturarDados() {
+            dados.push({
+                loja: document.getElementById("Nomeloja").value,
+                cliente: document.getElementById("NomeCliente").value,
+                observacao: document.getElementById("Obs").value
+            });
+
+            exibirDados();
+        }
+
+    
+
+
+function exibirDados() {
+    var resultado = document.getElementById("resultado");
+    resultado.innerHTML = "";
+
+    for (var i = 0; i < dados.length; i++) {
+        var div = document.createElement("div");
+        div.innerHTML = "<b>Loja:</b> " + dados[i].loja + "<br>" +
+                        "<b>Cliente:</b> " + dados[i].cliente + "<br>" +
+                        "<b>Observação:</b> " + dados[i].observacao + "<br><br>";
+
+        resultado.appendChild(div);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+function buscaCep() { 
+    let cepInput = document.getElementById('cep');
+    let cep = cepInput.value.replace(/\D/g, '');
+    let validacep = /^[0-9]{8}$/;
+    
+    if(cep != "" && validacep.test(cep)) {
+        $('#rua').val('...');
+        $('#bairro').val('...');
+        $('#cidade').val('...');
+      
+        //busca e preenche as informações 
+        $.getJSON(`https://viacep.com.br/ws/${cep}/json/?callback=?`, function (data) {
+            if(!('erro' in data)) {
+                $('#rua').val(data.logradouro);
+                $('#bairro').val(data.bairro);
+                $('#cidade').val(data.localidade);
+
+                cepInput.setCustomValidity('');
+            } else {
+                limpaForm();
+                cepInput.setCustomValidity('CEP não encontrado!');
+            }
+        });
+    } else {
+        limpaForm();
+        cepInput.setCustomValidity('CEP inválido!');
+    }
+}
+
+function limpaForm() {
+    $('#rua').val('');
+    $('#bairro').val('');
+    $('#cidade').val('');
+}
+
+
+    </script>
+</body>
+</html>

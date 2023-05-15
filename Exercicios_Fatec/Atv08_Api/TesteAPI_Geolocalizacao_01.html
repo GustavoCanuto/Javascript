@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <script>
+        const apiKey = "aa086142d0e64c25b65c6f1eb920d690";
+        const endereco1 = "R. Tv. Amatucci, 183, São Paulo";
+        const endereco2 = "R. Tv. Amatucci, 201, São Paulo";
+        const endpoint = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(endereco1)}&key=${encodeURIComponent(apiKey)}`;
+        const endpoint2 = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(endereco2)}&key=${encodeURIComponent(apiKey)}`;
+    
+        Promise.all([
+            fetch(endpoint).then(response => response.json()),
+            fetch(endpoint2).then(response => response.json())
+        ])
+        .then(responses => {
+            const lat1 = responses[0].results[0].geometry.lat;
+            const lng1 = responses[0].results[0].geometry.lng;
+            const lat2 = responses[1].results[0].geometry.lat;
+            const lng2 = responses[1].results[0].geometry.lng;
+    
+            // Criar elementos HTML para exibir as informações
+            const container = document.createElement('div');
+            const endereco1Info = document.createElement('p');
+            const endereco2Info = document.createElement('p');
+            const distanciaInfo = document.createElement('p');
+    
+            // Adicionar conteúdo aos elementos
+            endereco1Info.textContent = `Latitude e longitude do endereço 1: ${lat1}, ${lng1}`;
+            endereco2Info.textContent = `Latitude e longitude do endereço 2: ${lat2}, ${lng2}`;
+    
+            // Solicitar distância por rota de carro
+            const endpoint3 = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248a7abdf1baf284eada44ac97ef2cc4373&start=${lng1},${lat1}&end=${lng2},${lat2}&units=meters`;
+    
+            fetch(endpoint3)
+            .then(response => response.json())
+            .then(data => {
+                const distancia = data.features[0].properties.segments[0].distance;
+                let distanciaFormatada;
+    
+                if (distancia < 1000) {
+                    distanciaFormatada = `${distancia.toLocaleString('pt-BR', { maximumFractionDigits: 0 })} metros`;
+                } else {
+                    distanciaFormatada = `${(distancia / 1000).toLocaleString('pt-BR', { maximumFractionDigits: 2, minimumFractionDigits: 2 })} km`;
+                }
+                distanciaInfo.textContent = `A distância entre ${endereco1} e ${endereco2} é de ${distanciaFormatada}.`;
+    
+                // Adicionar os elementos à div de container
+                container.appendChild(endereco1Info);
+                container.appendChild(endereco2Info);
+                container.appendChild(distanciaInfo);
+    
+                // Adicionar o container à página
+                document.body.appendChild(container);
+            })
+            .catch(error => console.error(error));
+        })
+        .catch
+</script>    
+</body>
+</html>
+

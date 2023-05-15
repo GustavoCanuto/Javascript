@@ -1,0 +1,55 @@
+<html>
+
+<body>
+
+  <script>
+
+    var numeros = [];  // Cria um array vazio para armazenar os números aleatórios
+    var repetidos = []; // Cria um array vazio para armazenar os números que já foram detectados como repetidos
+
+
+    for (var i = 0; i < 15; i++) {
+      var num = Math.floor(Math.random() * 11);  // Gera um número aleatório entre 0 e 10
+      numeros.push(num);  // Adiciona o número gerado ao final do array
+    }
+
+
+
+    for (var i = 0; i < numeros.length; i++) {
+
+      var posicoes = [];  // Cria um array vazio para armazenar as posições em que o número se repete
+
+      if (repetidos.indexOf(numeros[i]) === -1) { // Verifica se o número já foi detectado como repetido
+        /*
+        O método indexOf() é usado para encontrar a posição de um elemento dentro de um array. Se o elemento não for encontrado, o método retorna -1. 
+        Portanto, if (repetidos.indexOf(numeros[i]) === -1) significa que se o número atual numeros[i] não for encontrado no array repetidos, então 
+        ele não foi repetido anteriormente e pode ser adicionado ao array repetidos.
+        */
+
+        for (var j = i + 1; j < numeros.length; j++) {  // Loop interno para comparar o elemento atual com todos os outros elementos do vetor
+
+          if (numeros[i] === numeros[j]) {  // Se dois elementos forem iguais, eles são repetidos
+
+            posicoes.push(j);  // Adiciona a posição do outro elemento ao array de posições
+
+          }
+        }
+
+        if (posicoes.length > 0) {  // Se o array de posições não estiver vazio, o número se repete
+
+          repetidos.push(numeros[i]); // Adiciona o número à lista de números repetidos
+
+          posicoes.unshift(i); // Adiciona a posição do elemento atual ao início do array de posições, para ser mostrado em ordem crescente
+
+          document.write("O número " + numeros[i] + " está nas posições " + posicoes.join(", ") + " do vetor. <br>");
+
+        }
+
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

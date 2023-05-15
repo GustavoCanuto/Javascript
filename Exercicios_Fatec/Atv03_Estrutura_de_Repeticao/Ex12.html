@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 12</title>
+</head>
+<body>
+    <script>
+        //coletando salario e numero de filhos
+        //media do salario da populaçã
+        // media numero de filhos
+        // maior salario
+        // percentual de pessoas com salario até 100
+        var i =0;
+        var salarioBaixo =0;
+        var maior = 0;
+        var totalSalario = 0;
+        var totalFilho = 0;
+
+        do{
+        var salario = parseFloat(prompt("Digite seu salario "))
+        var nFilhos = parseFloat(prompt("Digite quantidade de filhos "))
+        var continua = parseFloat(prompt("Digite 0 para parar ou qualquer coisa para continuar"))
+          
+        totalFilho = nFilhos + totalFilho
+        totalSalario = salario + totalSalario
+
+        if(salario <= 100){
+
+            salarioBaixo++
+        }
+
+        if(salario>maior){
+                
+                var maior = salario;
+
+        } 
+
+        i++
+
+       }
+        while(continua!=0)
+       var mediaSalario = totalSalario/ i
+       var mediaFilhos = totalFilho/ i
+
+       if(salarioBaixo>0){
+
+       var percentual = (salarioBaixo/ i)*100
+
+       }else{
+        var percentual = 0;
+       }
+
+        document.write(`A média do Salário da população é ${mediaSalario} <br> 
+        A media do numero de filhos é ${mediaFilhos} <br>
+        O maior salário é ${maior} <br>
+        O percentual de pessoas com salário de R$100 é ${percentual} %`)
+    </script>
+    
+</body>
+</html>

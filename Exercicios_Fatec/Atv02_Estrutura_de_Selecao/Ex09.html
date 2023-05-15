@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Exercicio 09</title>
+</head>
+<body>
+    <script>
+
+        
+       //prompt
+       // Number.parseFloat(.replace(',','.'))
+        var primeiro = Number.parseFloat(prompt("Escreva  o primeiro numero").replace(',','.'))
+       var segundo = Number.parseFloat(prompt("Escreva  o segundo numero").replace(',','.'))
+       var terceiro = Number.parseFloat(prompt("Escreva o terceiro numero ").replace(',','.'))
+
+      if(primeiro< segundo&& primeiro< terceiro){
+
+        document.write(`o primeiro numero digitado ${primeiro} é o menor numero`)
+
+      }
+            
+       else if (segundo<primeiro&&segundo<terceiro){
+            document.write (`o segundo numero digitado ${segundo} é o menor numero`)
+            
+       }
+       else if (terceiro<primeiro&&terceiro<segundo){
+            document.write (`o terceiro numero digitado ${terceiro} é o menor numero`)
+       }
+      else  {
+          document.write ("Há dois ou mais números iguais")
+      }
+       
+    </script>
+   <P> Para uma nova verificação atualize a pagina </P>
+</body>
+</html>

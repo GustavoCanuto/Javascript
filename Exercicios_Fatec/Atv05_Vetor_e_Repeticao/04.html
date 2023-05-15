@@ -1,0 +1,38 @@
+<html>
+<body>
+
+<script>
+var messageOriginal = "A array Original é "
+//var messageNovaArray = "A nova array é "
+var v = [0,5,1,4,2,7,8,3,6];
+
+//var x = [];  //
+
+
+// Percorre o vetor em busca do maior valor
+for (let i = 8; i >=5; i--) {
+  var aux = v[i]
+  v[i] = v[8-i+1]
+  v[8-i+1] = aux
+}
+
+v[3] = v[1]
+v[v[3]] = v[v[2]]
+
+// Exibe a array original
+//for (let i = 0; i < v.length; i++) {
+//  messageOriginal += v[i] + " ";
+//}
+
+// Exibe a nova array
+//for (let i = 0; i < x.length; i++) {
+ // messageNovaArray += x[i] + " ";
+//}
+
+document.write(v + "<br>");
+//document.write(messageNovaArray + "<br>");
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      //Tetando Api Mapqiestapi para obter geolocalização e calcular distancia com ela 
+      // formula pronta
+        const apiKey = "uytabsN3MzIxmDwT65aanufpiyjT3ZvO";
+        const endereco1 = "R. Tv. Amatucci, 183, São Paulo ";
+        const endereco2 = "R. Tv. Amatucci, 201,, São Paulo";
+       
+        const endpoint1 = `https://www.mapquestapi.com/geocoding/v1/address?key=${encodeURIComponent(apiKey)}&location=${encodeURIComponent(endereco1)}`;
+        const endpoint2 = `https://www.mapquestapi.com/geocoding/v1/address?key=${encodeURIComponent(apiKey)}&location=${encodeURIComponent(endereco2)}`;
+
+        // Função para converter graus em radianos
+        function toRadians(degrees) {
+          return degrees * (Math.PI / 180);
+        }
+
+        // Função para calcular a distância entre duas localizações usando a fórmula de Haversine
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+          const earthRadius = 6371; // Raio médio da Terra em quilômetros
+
+          // Converter as coordenadas de graus para radianos
+          const lat1Rad = toRadians(lat1);
+          const lon1Rad = toRadians(lon1);
+          const lat2Rad = toRadians(lat2);
+          const lon2Rad = toRadians(lon2);
+
+          // Diferença das coordenadas de latitude e longitude
+          const latDiff = lat2Rad - lat1Rad;
+          const lonDiff = lon2Rad - lon1Rad;
+
+          // Fórmula de Haversine
+          const a =
+            Math.sin(latDiff / 2) * Math.sin(latDiff / 2) +
+            Math.cos(lat1Rad) * Math.cos(lat2Rad) * Math.sin(lonDiff / 2) * Math.sin(lonDiff / 2);
+          const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+          // Distância em quilômetros
+          const distance = earthRadius * c;
+
+          return distance;
+        }
+
+        // Função para exibir a distância com a unidade apropriada (metros ou quilômetros)
+        function formatDistance(distance) {
+          if (distance < 1) {
+            const distanceMeters = distance * 1000;
+            return `${distanceMeters.toFixed(2)} metros`;
+          } else {
+            return `${distance.toFixed(2)} quilômetros`;
+          }
+        }
+
+        // Obter geolocalização do endereço 1
+        fetch(endpoint1)
+            .then(response => response.json())
+            .then(data => {
+                const latitude1 = data.results[0].locations[0].latLng.lat;
+                const longitude1 = data.results[0].locations[0].latLng.lng;
+                document.write(`Latitude do endereço 1: ${latitude1}<br>`);
+                document.write(`Longitude do endereço 1: ${longitude1}<br>`);
+
+                // Obter geolocalização do endereço 2
+                fetch(endpoint2)
+                    .then(response => response.json())
+                    .then(data => {
+                        const latitude2 = data.results[0].locations[0].latLng.lat;
+                        const longitude2 = data.results[0].locations[0].latLng.lng;
+                        document.write(`Latitude do endereço 2: ${latitude2}<br>`);
+                        document.write(`Longitude do endereço 2: ${longitude2}<br>`);
+
+                        // Chamar a função para calcular a distância
+                        const calculatedDistance = calculateDistance(latitude1, longitude1, latitude2, longitude2);
+
+                        // Exibir a distância formatada no documento
+                        const formattedDistance = formatDistance(calculatedDistance);
+                        document.write(`A distância entre as duas localizações é de ${formattedDistance}.`);
+                    })
+                    .catch(error => {
+                        console.log("Erro ao obter a geolocalização do endereço 2:", error);
+                    });
+            })
+            .catch(error => {
+                console.log("Erro ao obter a geolocalização do endereço 1:", error);
+            });
+    </script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,34 @@
+<html>
+<body>
+<h1>Hello World</h1>
+
+<script>
+    // Definir um vetor para armazenar os 10 nomes
+var nomes = [];//new Array(10);
+
+// Ler os 10 nomes
+for (var i = 0; i < 10; i++) {
+    nomes[i] = prompt("Digite o nome da pessoa " + (i+1));
+    
+}
+
+// Ler um nome adicional para verificar se está no vetor
+var nomeBusca = prompt("Digite um nome para buscar");
+
+
+for (var i = 0; i < 10; i++) {
+    if(nomes[i]==nomeBusca){
+        alert("achei");
+        break;
+    }
+    else if(i==9){
+        alert("nao achei")
+       
+    }
+}
+
+
+</script>
+
+</body>
+</html>

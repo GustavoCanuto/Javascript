@@ -1,0 +1,35 @@
+<html>
+<body>
+
+<script>
+var messageOriginal = "A array V  é "
+var messageNovaArray = "A array X é "
+var v = [5,1,4,2,7,8,3,6];
+
+var x = [];  //
+var contador = 0;
+
+// Invertendo valoreres nova array
+for (let i = v.length-1; i >=0; i--) {
+    x[contador] = v[i];
+    contador++ 
+}
+
+
+// Exibe a array V
+for (let i = 0; i < v.length; i++) {
+  messageOriginal += v[i] + " ";
+}
+
+//Exibe a ARRAY x
+for (let i = 0; i < x.length; i++) {
+ messageNovaArray += x[i] + " ";
+}
+
+document.write(messageOriginal + "<br>");
+document.write(messageNovaArray + "<br>");
+
+</script>
+
+</body>
+</html>

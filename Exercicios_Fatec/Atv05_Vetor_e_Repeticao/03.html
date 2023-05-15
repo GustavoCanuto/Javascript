@@ -1,0 +1,26 @@
+<html>
+<body>
+
+<script>
+    // Escreva um algoritmo que exiba  o valor do maior elemento do array  V 
+    //e a respectiva posição que ele ocupa no vetor.  
+var v = [5,1,4,2,7,8,3,6];
+
+var menor = v[0];  // Assume que o menor valor é o primeiro elemento
+var posicao = 0;   // Armazena a posição do maior valor
+
+// Percorre o vetor em busca do maior valor
+for (var i = 1; i < v.length; i++) {
+  if (v[i] < menor) {
+    menor = v[i];
+    posicao = i;
+  }
+}
+
+// Exibe o valor do maior elemento e a sua posição no vetor
+alert("O maior elemento é " + menor + ", e está na posição " + posicao);
+
+</script>
+
+</body>
+</html>

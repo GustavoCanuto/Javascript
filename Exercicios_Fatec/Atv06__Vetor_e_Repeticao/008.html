@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemplo de Captura de Dados</title>
+    
+</head>
+<body>
+    <fieldset id="loja">
+        <legend>Dados da loja</legend>
+        <form id="form1">
+            <div>
+                <label for="Nomeloja">Nome da loja:</label><br>
+                <input type="text" id="Nomeloja" name="Nomeloja" minlength="3" maxlength="50">
+                <br><br>
+                <label for="Obs">Observação:</label><br>
+                <input type="text" id="Obs" name="Obs" maxlength="50">
+                <br><br>
+            </div>
+        </form>
+    </fieldset>
+
+    <fieldset id="cliente">
+        <legend>Dados do Cliente</legend>
+        <form id="form2">
+            <div>
+                <label for="NomeCliente">Nome do Cliente:</label><br>
+                <input type="text" id="NomeCliente" name="NomeCliente" minlength="3" maxlength="50">
+                <br><br>
+            </div>
+        </form>
+    </fieldset>
+
+    <button type="button" id="BotaoVerificar" onclick="capturarDados()">Verificar</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        var dados = [];
+
+        function capturarDados() {
+            var nomeLoja = document.getElementById("Nomeloja").value;
+            var nomeCliente = document.getElementById("NomeCliente").value;
+            var observacao = document.getElementById("Obs").value;
+
+            dados.push({
+                loja: nomeLoja,
+                cliente: nomeCliente,
+                observacao: observacao
+            });
+
+            exibirDados();
+        }
+
+        function exibirDados() {
+            var resultado = document.getElementById("resultado");
+            resultado.innerHTML = "";
+
+            for (var i = 0; i < dados.length; i++) {
+                var div = document.createElement("div");
+                div.innerHTML = "<b>Loja:</b> " + dados[i].loja + "<br>" +
+                                "<b>Cliente:</b> " + dados[i].cliente + "<br>" +
+                                "<b>Observação:</b> " + dados[i].observacao + "<br><br>";
+
+                resultado.appendChild(div);
+            }
+        }
+    </script>
+</body>
+</html>

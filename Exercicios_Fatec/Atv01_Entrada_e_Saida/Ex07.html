@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 07</title>
+</head>
+<body>
+    <Script>
+       // imc = Peso/ alturax altura
+
+    
+        var Peso = Number.parseFloat(prompt(`Escreva seu Peso`).replace(',','.'))
+
+        var Altura = Number.parseFloat(prompt(`Escreva sua Altura`).replace(',','.'))
+ 
+        var Imc = Peso/Altura**2
+
+        document.write(`Seu IMC é ${Imc.toFixed(2)}`)
+        
+        
+    </Script>
+    <p> Para fazer novo calculo recarregue a pagina <br/></p>
+</body>
+</html>

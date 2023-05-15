@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function converterMoeda(valor, moedaOrigem, moedaDestino) {
+          const url = `https://api.exchangerate-api.com/v4/latest/${moedaOrigem}`;
+        
+          fetch(url)
+            .then(response => response.json())
+            .then(data => {
+              const taxaCambio = data.rates[moedaDestino];
+              const valorConvertido = valor * taxaCambio;
+              document.write(`R$ ${valor}  = $${valorConvertido} `);
+            })
+            .catch(error => {
+              document.write('Ocorreu um erro na conversão de moeda.');
+              console.error(error);
+            });
+        }
+        
+        var valor = parseFloat(prompt("Digite um valor"));
+        
+        var moedaOrigem = prompt("Que tipo de moeda é essa?\nDigite B para real e D para dólar");
+        
+        if (moedaOrigem == "B") {
+          moedaOrigem = 'BRL';
+        } else if (moedaOrigem == "D") {
+          moedaOrigem = 'USD';
+        } else {
+          alert("Erro");
+        }
+        
+        var moedaDestino = prompt("Para que tipo de moeda quer converter?\nDigite B para real e D para dólar");
+        
+        if (moedaDestino == "B") {
+          moedaDestino = 'BRL';
+        } else if (moedaDestino == "D") {
+          moedaDestino = 'USD';
+        } else {
+          alert("Erro");
+        }
+        
+        converterMoeda(valor, moedaOrigem, moedaDestino);
+        </script>
+</body>
+</html>

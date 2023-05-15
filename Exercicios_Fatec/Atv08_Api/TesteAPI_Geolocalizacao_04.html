@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+
+    <script>
+      
+        const apiKey = "uytabsN3MzIxmDwT65aanufpiyjT3ZvO";
+        const endereco1 = "R. Tv. Amatucci, 183, São Paulo ";
+        const endereco2 = "R. Tv. Amatucci, 201,, São Paulo";
+
+// Função para obter a distância entre dois endereços usando a API da MapQuest
+async function obterDistancia(enderecoOrigem, enderecoDestino, modo) {
+  const url = `http://www.mapquestapi.com/directions/v2/route?key=${apiKey}&from=${enderecoOrigem}&to=${enderecoDestino}&outFormat=json&routeType=${modo}`;
+  
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    
+    const distancia = data.route.distance;
+    
+    // Verificar se a distância é menor que 1km e mostrar em metros
+    if (distancia < 1) {
+      const distanciaMetros = Math.round(distancia * 1000);
+      document.write(`Distância a ${modo}: ${distanciaMetros} metros<br>`);
+    } else {
+      document.write(`Distância a ${modo}: ${distancia} km<br>`);
+    }
+  } catch (error) {
+    console.log("Ocorreu um erro ao obter a distância:", error);
+  }
+}
+
+// Chamada da função para obter a distância a pé
+obterDistancia(endereco1, endereco2, "pedestrian");
+
+// Chamada da função para obter a distância de carro
+obterDistancia(endereco1, endereco2, "car");
+
+// Chamada da função para obter a distância de bicicleta
+obterDistancia(endereco1, endereco2, "bicycle");
+
+    </script>
+
+>
+</body>
+
+
+</body>
+</html>
+

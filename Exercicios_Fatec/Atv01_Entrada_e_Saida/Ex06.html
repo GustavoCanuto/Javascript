@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 06</title>
+</head>
+<body>
+    <Script>
+       
+
+        var Partido1 = prompt('Escreva o nome de um partido :')
+        var VotosPartido1 = Number.parseInt(prompt(`Escreva a quantida de votos que o Partido ${Partido1} recebeu: `))
+
+        var Partido2 = prompt('Escreva o nome de um partido :')
+        var VotosPartido2 = Number.parseInt(prompt(`Escreva a quantida de votos que o Partido ${Partido2} recebeu: `))
+
+        var Partido3 = prompt('Escreva o nome de um partido :')
+        var VotosPartido3 = Number.parseInt(prompt(`Escreva a quantida de votos que o Partido ${Partido3} recebeu: `))
+ 
+        var Totalvotos = VotosPartido1+VotosPartido2+VotosPartido3
+
+        document.write(`O Partido ${Partido1} recebeu ${(VotosPartido1/Totalvotos)*100}% dos votos <br/>O Partido ${Partido2} recebeu ${(VotosPartido2/Totalvotos)*100}% dos votos <br/>O Partido ${Partido3} recebeu ${(VotosPartido3/Totalvotos)*100}% dos votos <br/>`)
+        
+        
+    </Script>
+    <p> Para fazer novo calculo recarregue a pagina <br/></p>
+</body>
+</html>

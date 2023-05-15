@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var lista= [];
+        var i=0;
+        var j=0;
+        var listaPares =[];
+
+     while(i>=0){   
+        
+         lista[i] = prompt("Digite um numero inteiro para acrescentar na lista, Digite X para finalizar")
+
+         if(lista[i].toString()=="x"||lista[i].toString()=="X"){
+
+            break;
+         }
+         else{
+            lista[i] = parseInt(lista[i]);
+         }
+        
+         i++;
+
+     }
+
+     for(let i=0; i<lista.length-1; i++){
+
+        if(lista[i]%2==0){
+            listaPares[j] = lista[i];
+            j++;
+        }     
+     }
+
+     document.write("Os numeros pares dos quais você digitou são: " +listaPares)
+    
+    </script>
+</body>
+</html>

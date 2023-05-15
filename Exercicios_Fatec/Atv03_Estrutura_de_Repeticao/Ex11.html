@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 10</title>
+</head>
+<body>
+    <script>
+        
+       
+        var n = prompt("Digite um numero (digite um numero negativo para parar)")
+        var conjunto1=0
+        var conjunto2=0
+        var conjunto3=0
+        var conjunto4=0
+        
+        while(n>0){
+
+            n = parseInt(n)
+            if(n>=0 && n<=25){
+                conjunto1++;
+            } else if(n>=26 && n<=50) {
+                conjunto2++;
+            }else if(n>=51 && n<=75) {
+                conjunto3++;
+            }else if(n>=76 && n<=100) {
+                conjunto4++
+            }
+
+            var n = prompt("Digite um numero (digite um numero negativo para parar)")
+
+        }
+
+        document.write(`[0-25] foi digitado ${conjunto1} numeros <br> [26-50] foi digitado ${conjunto2} numeros<br> [51-75] foi digitado ${conjunto3}  numeros <br> [76-100] foi digitado ${conjunto4} numeros`)
+
+    </script>
+</body>
+</html>

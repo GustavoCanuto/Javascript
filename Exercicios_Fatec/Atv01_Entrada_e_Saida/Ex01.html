@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 01</title>
+</head>
+<body>
+    <Script>
+        var ValorCompra = Number.parseFloat(prompt('Insira o valor da compra : ').replace(',','.'))
+        // calcular impostos de vendas: estadual e municipal
+        
+        // imposto estadual sobre vendas é 4%
+        var ImpostoEstadual = ValorCompra*0.04
+        // imposto municipal sobre vendas é 2%
+        var ImpostoMunicipal = ValorCompra*0.02
+        //Valor Imposto total sobre vendas
+        var ImpostoTotal = ImpostoEstadual + ImpostoMunicipal
+        // Valor total da venda
+        var ValorTotal = ValorCompra + ImpostoTotal 
+
+        //exibir valor da compra
+        document.write(`O valor da compra é:  ${ValorCompra} <br/>`)
+        //imposto estadual sobre vendas
+        document.write(`O valor do Imposto Estadual sobre a venda é:  ${ImpostoEstadual}  <br/>`)
+        // imposto municipal sobre vendas
+        document.write(`O valor do Imposto Municipal sobre a venda é:  ${ImpostoMunicipal}  <br/>`)
+        // imposto total sobre vendas
+        document.write(`O valor do Imposto Total sobre a venda é:  ${ImpostoTotal}  <br/>`)
+        // total da venda soma valor da compra + imposto total 
+        document.write(`O valor total da venda é:  ${ValorTotal}  <br/>`)
+        
+    </Script>
+    <p> Para fazer novo calculo recarregue a pagina <br/></p>
+</body>
+</html>

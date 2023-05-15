@@ -1,0 +1,28 @@
+
+
+<html>
+<body>
+
+<script>
+
+var messageOriginal = "A nova array V é "
+
+var v = [5,1,4,2,7,8,3,6];
+
+var temp = v[0];  // Armazena o primeiro elemento do array em uma variável temporária
+v[0] = v[v.length - 1];  // Atribui o último elemento do array ao primeiro elemento
+v[v.length - 1] = temp;  // Atribui o valor da variável temporária ao último elemento
+
+// Exibe a array V
+for (let i = 0; i < v.length; i++) {
+  messageOriginal += v[i] + " ";
+}
+
+
+document.write(messageOriginal + "<br>");
+
+
+</script>
+
+</body>
+</html>
